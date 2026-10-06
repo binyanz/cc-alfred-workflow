@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# cc-action: Handles all actions from the cc workflow
+# Arg format: name:dir (e.g., "www:/Users/huf/fbsource-www/www")
+# For devserver profiles: just the profile name (e.g., "devserver-myclaw")
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+arg="$1"
+
+# Devserver profiles — no claude-profile-create
+if [[ "$arg" == devserver-* ]]; then
+  profile_name="$arg"
+else
+  # Parse name:dir
+  session_name="${arg%%:*}"
+  dir="${arg#*:}"
+  profile_name="claude-$session_name"
+
+  # Create/update profile
+  "$SCRIPT_DIR/claude-profile-create" "$session_name" "$dir"
+fi
+
+# Open or switch to iTerm tab with this profile
+osascript -e "
+tell application \"iTerm\"
+  activate
+  set found to false
+  repeat with w in windows
+    if not found then
+      set tabCount to count of tabs of w
+      repeat with i from 1 to tabCount
+        if not found then
+          set t to tab i of w
+          repeat with s in sessions of t
+            set pname to (profile name of s)
+            if pname is \"$profile_name\" then
+              tell w
+                select tab i
+              end tell
+              set found to true
+            end if
+          end repeat
+        end if
+      end repeat
+    end if
+  end repeat
+  if not found then
+    if (count of windows) = 0 then
+      create window with profile \"$profile_name\"
+    else
+      tell current window
+        create tab with profile \"$profile_name\"
+      end tell
+    end if
+  end if
+end tell
+"

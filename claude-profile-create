@@ -1,0 +1,32 @@
+#!/bin/bash
+
+NAME="$1"
+DIR="$2"
+
+if [ -z "$NAME" ] || [ -z "$DIR" ]; then
+  echo "Usage: claude-profile-create <session-name> <directory>"
+  exit 1
+fi
+
+TMUX_CMD="$HOME/my_work/cc-alfred-workflow/claude-tmux $NAME '$DIR'"
+
+PROFILE_DIR="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+mkdir -p "$PROFILE_DIR"
+
+cat > "$PROFILE_DIR/claude-$NAME.json" <<EOF
+{
+  "Profiles": [{
+    "Name": "claude-$NAME",
+    "Guid": "claude-$NAME",
+    "Custom Command": "Yes",
+    "Command": "$TMUX_CMD",
+    "Tags": ["claude"],
+    "Badge Text": "$NAME",
+    "Title Components": 32,
+    "Allow Title Setting": false,
+    "Option Key Sends": 2
+  }]
+}
+EOF
+
+echo "Profile 'claude-$NAME' created. Available in iTerm2 now."

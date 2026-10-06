@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.claude.sessions</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>A1B2C3D4-1111-1111-1111-111111111111</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E5F6A7B8-2222-2222-2222-222222222222</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string>Launch Claude Code sessions in iTerm2 with specific profiles</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Claude Sessions</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>./cc-action "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E5F6A7B8-2222-2222-2222-222222222222</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"audit-product","arg":"audit-product:\/Users\/bytedance\/go\/src\/code.byted.org\/brynn.zhao\/audit_product","subtitle":"Launch claude-claw session"},{"title":"dashboard","arg":"dashboard:\/Users\/bytedance\/go\/src\/code.byted.org\/brynn.zhao\/audit_product"},{"title":"datasource-switch","arg":"datasource-switch:\/Users\/bytedance\/go\/src\/code.byted.org\/brynn.zhao\/audit_product"},{"title":"fs-moderation-template-align","arg":"fs-moderation-template-align:\/Users\/bytedance\/go\/src\/code.byted.org\/brynn.zhao\/audit_product","subtitle":"Launch claude-claw session"},{"title":"reca","arg":"reca:\/Users\/bytedance\/go\/src\/code.byted.org\/brynn.zhao\/audit_product"},{"title":"ai-app-build","arg":"ai-app-build:\/Users\/bytedance\/Documents\/brynnz"}]</string>
+				<key>keyword</key>
+				<string>cc</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Select a Claude session to launch</string>
+				<key>title</key>
+				<string>Claude Sessions</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>A1B2C3D4-1111-1111-1111-111111111111</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Type "cc" in Alfred to see a list of Claude sessions. Select one to open in iTerm2.</string>
+	<key>uidata</key>
+	<dict>
+		<key>A1B2C3D4-1111-1111-1111-111111111111</key>
+		<dict>
+			<key>xpos</key>
+			<real>100</real>
+			<key>ypos</key>
+			<real>105</real>
+		</dict>
+		<key>E5F6A7B8-2222-2222-2222-222222222222</key>
+		<dict>
+			<key>xpos</key>
+			<real>400</real>
+			<key>ypos</key>
+			<real>100</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+</dict>
+</plist>
